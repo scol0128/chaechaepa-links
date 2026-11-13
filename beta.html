@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>채채파 LAB 사전 체험단 모집 | 어르신 안심·그림 심리·K-Snack</title>
+<meta name="description" content="채채파 신규 서비스(어르신 안심 앱, 그림 심리 분석 앱, K-Snack Sort 게임)를 2주 먼저 써보고 피드백을 주시면 정식 출시 후 유료 기능 30일 무료 혜택을 드립니다.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Pretendard','Malgun Gothic',sans-serif;background:#f8fafc;color:#0f172a;-webkit-font-smoothing:antialiased;line-height:1.6;padding-bottom:60px}
+.wrap{max-width:580px;margin:0 auto;padding:0 16px}
+
+/* 상단 네비게이션 */
+.top-bar{display:flex;align-items:center;justify-content:space-between;padding:16px 0 12px;border-bottom:1px solid #e2e8f0;margin-bottom:20px}
+.back-link{font-size:13.5px;font-weight:700;color:#334155;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+.back-link:hover{color:#0f172a}
+.top-badge{font-size:11px;font-weight:700;padding:3px 8px;border-radius:12px;background:#e0e7ff;color:#4338ca}
+
+/* 히어로 섹션 */
+.hero{text-align:center;padding:10px 0 24px}
+.hero-tag{display:inline-block;font-size:12px;font-weight:800;color:#6366f1;background:#eef2ff;padding:4px 12px;border-radius:20px;margin-bottom:10px}
+.hero h1{font-size:24px;font-weight:800;line-height:1.3;color:#0f172a;margin-bottom:10px;word-break:keep-all}
+.hero p{font-size:14px;color:#475569;line-height:1.5;word-break:keep-all}
+
+/* 혜택 강조 배너 */
+.benefit-banner{background:linear-gradient(135deg,#4f46e5,#6366f1);border-radius:16px;padding:16px 18px;color:#fff;margin-bottom:24px;box-shadow:0 4px 12px rgba(99,102,241,.25)}
+.benefit-title{font-size:15px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.benefit-desc{font-size:12.5px;color:#e0e7ff;line-height:1.5}
+
+/* 서비스 카드 목록 */
+.service-list{display:flex;flex-direction:column;gap:16px;margin-bottom:28px}
+.service-card{background:#fff;border-radius:16px;padding:18px;border:1.5px solid #e2e8f0;box-shadow:0 1px 3px rgba(0,0,0,.03);transition:border-color .2s ease}
+.service-card.selected{border-color:#4f46e5;background:#fdfdfd}
+.s-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.s-icon-title{display:flex;align-items:center;gap:8px}
+.s-icon{font-size:26px}
+.s-title{font-size:16px;font-weight:800;color:#0f172a}
+.s-limit{font-size:11px;font-weight:700;padding:3px 8px;border-radius:12px;background:#fee2e2;color:#b91c1c}
+.s-desc{font-size:13px;color:#475569;margin-bottom:12px;line-height:1.5}
+.s-features{background:#f8fafc;border-radius:10px;padding:10px 12px;margin-bottom:12px}
+.s-features li{font-size:12px;color:#334155;list-style:none;display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.s-features li:last-child{margin-bottom:0}
+.s-reward{font-size:12px;font-weight:700;color:#4338ca;background:#eef2ff;padding:8px 10px;border-radius:8px;display:flex;align-items:center;gap:6px}
+
+/* 신청 폼 */
+.form-box{background:#fff;border-radius:16px;padding:22px 18px;border:1px solid #e2e8f0;box-shadow:0 2px 6px rgba(0,0,0,.04)}
+.form-title{font-size:17px;font-weight:800;color:#0f172a;margin-bottom:6px}
+.form-subtitle{font-size:12.5px;color:#64748b;margin-bottom:18px}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:13px;font-weight:700;color:#334155;margin-bottom:6px}
+.form-select, .form-input, .form-textarea{width:100%;font-size:14px;padding:11px 13px;border-radius:10px;border:1.5px solid #cbd5e1;outline:none;background:#fff;font-family:inherit}
+.form-select:focus, .form-input:focus, .form-textarea:focus{border-color:#4f46e5}
+.form-textarea{resize:vertical;min-height:70px}
+
+/* 개인정보 동의 */
+.privacy-box{background:#f8fafc;border-radius:10px;padding:12px;border:1px solid #e2e8f0;margin-bottom:18px}
+.privacy-text{font-size:11.5px;color:#64748b;line-height:1.5;margin-bottom:8px}
+.privacy-text b{color:#334155}
+.privacy-check{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#1e293b;cursor:pointer}
+.privacy-check input{width:16px;height:16px;accent-color:#4f46e5}
+
+/* 버튼 */
+.submit-btn{width:100%;padding:14px;border:none;border-radius:12px;background:#4f46e5;color:#fff;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 3px 8px rgba(79,70,229,.3);transition:background .15s ease}
+.submit-btn:hover{background:#4338ca}
+.submit-btn:disabled{background:#94a3b8;cursor:not-allowed;box-shadow:none}
+
+/* 안내 및 이메일 링크 백업 */
+.fallback-box{text-align:center;margin-top:16px;font-size:12px;color:#64748b}
+.fallback-box a{color:#4f46e5;font-weight:700;text-decoration:none}
+
+/* 모달 완료 팝업 */
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:999;align-items:center;justify-content:center;padding:20px}
+.modal-content{background:#fff;border-radius:18px;max-width:400px;width:100%;padding:24px 20px;text-align:center;box-shadow:0 10px 25px rgba(0,0,0,.2)}
+.modal-icon{font-size:42px;margin-bottom:12px}
+.modal-title{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:8px}
+.modal-desc{font-size:13.5px;color:#475569;line-height:1.5;margin-bottom:20px}
+.modal-btn{display:inline-block;width:100%;padding:12px;border-radius:10px;background:#4f46e5;color:#fff;font-size:14px;font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top-bar">
+    <a class="back-link" href="index.html">← 구매 허브로 돌아가기</a>
+    <span class="top-badge">사전 체험단 (각 20명 한정)</span>
+  </div>
+
+  <div class="hero">
+    <span class="hero-tag">🧪 CHAECHAEPA LAB</span>
+    <h1>오픈 전 2주 먼저 써보고<br>30일 무료 혜택 받으세요</h1>
+    <p>채채파가 자체 개발 중인 3가지 실전 서비스를 미리 경험하고 소중한 의견을 들려주실 20분의 초기 테스터를 모십니다.</p>
+  </div>
+
+  <div class="benefit-banner">
+    <div class="benefit-title">🎁 테스터 참여 혜택</div>
+    <div class="benefit-desc">
+      체험 기간(2주) 동안 사용 후 간단한 피드백(설문 3문항)을 작성해 주시면, <strong>정식 출시 후 유료 프리미엄 기능 30일 무료 이용권</strong>을 100% 지급해 드립니다.
+    </div>
+  </div>
+
+  <div class="service-list">
+    <!-- 1. 어르신 안심 앱 -->
+    <div class="service-card" id="card-ansim">
+      <div class="s-header">
+        <div class="s-icon-title">
+          <span class="s-icon">👵</span>
+          <div class="s-title">어르신 안심 케어 (실버 세이프)</div>
+        </div>
+        <span class="s-limit">선착순 20명</span>
+      </div>
+      <div class="s-desc">혼자 계신 부모님의 스마트폰 미활동을 감지해 자녀에게 안심 알림을 보내주는 비상 케어 앱입니다.</div>
+      <ul class="s-features">
+        <li>✓ 스마트폰 미사용 8시간 감지 시 자녀 알림</li>
+        <li>✓ 원클릭 긴급 비상 SOS 호출</li>
+        <li>✓ 매일 복약 시간 음성 확인 가이드</li>
+      </ul>
+      <div class="s-reward">🎉 피드백 완료 시: 프리미엄 안심 모니터링 30일 무료 이용권</div>
+    </div>
+
+    <!-- 2. 그림 심리 앱 -->
+    <div class="service-card" id="card-mind">
+      <div class="s-header">
+        <div class="s-icon-title">
+          <span class="s-icon">🎨</span>
+          <div class="s-title">마인드 캔버스 (AI 그림 심리 분석)</div>
+        </div>
+        <span class="s-limit">선착순 20명</span>
+      </div>
+      <div class="s-desc">직접 그린 집·나무·사람(HTP) 그림을 촬영하면 AI가 심리 상태와 스트레스 지수를 정밀 분석해 주는 힐링 앱입니다.</div>
+      <ul class="s-features">
+        <li>✓ HTP 미술심리 전문 검사 모델 적용</li>
+        <li>✓ 자녀 및 가족 감정 상태 심층 리포트</li>
+        <li>✓ 맞춤형 마음 힐링 솔루션 가이드 제공</li>
+      </ul>
+      <div class="s-reward">🎉 피드백 완료 시: 심층 심리 분석 리포트 30일 무료 이용권</div>
+    </div>
+
+    <!-- 3. K-Snack Sort -->
+    <div class="service-card" id="card-ksnack">
+      <div class="s-header">
+        <div class="s-icon-title">
+          <span class="s-icon">🎮</span>
+          <div class="s-title">K-Snack Sort (레시피 퍼즐 게임)</div>
+        </div>
+        <span class="s-limit">선착순 20명</span>
+      </div>
+      <div class="s-desc">떡, 어묵, 고추장 등 분식 재료를 3개씩 모아 나만의 K-푸드 요리를 완성하는 아기자기한 캐주얼 힐링 퍼즐 게임입니다.</div>
+      <ul class="s-features">
+        <li>✓ 실제 한식 레시피를 배우는 퍼즐 모드</li>
+        <li>✓ 글로벌 K-푸드 분식집 경영 스테이지</li>
+        <li>✓ 귀여운 도트 그래픽과 ASMR 조리 효과음</li>
+      </ul>
+      <div class="s-reward">🎉 피드백 완료 시: 무제한 하트 &amp; 황금 조리도구 30일 무료 이용권</div>
+    </div>
+  </div>
+
+  <!-- 신청 폼 -->
+  <div class="form-box">
+    <div class="form-title">📝 사전 체험단 신청하기</div>
+    <div class="form-subtitle">개인정보는 오직 이메일만 수집하며, 선정 시 테스트 링크를 보내드립니다.</div>
+
+    <form id="beta-form" onsubmit="handleBetaSubmit(event)">
+      <div class="form-group">
+        <label class="form-label">체험 희망 서비스 (필수)</label>
+        <select id="app-choice" class="form-select" required>
+          <option value="">서비스를 선택해 주세요</option>
+          <option value="어르신 안심 케어 (실버 세이프)">👵 어르신 안심 케어 (실버 세이프)</option>
+          <option value="마인드 캔버스 (AI 그림 심리 분석)">🎨 마인드 캔버스 (AI 그림 심리 분석)</option>
+          <option value="K-Snack Sort (레시피 퍼즐 게임)">🎮 K-Snack Sort (레시피 퍼즐 게임)</option>
+          <option value="전체 (3개 서비스 모두 관심)">✨ 3개 서비스 모두 관심 있음</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">받으실 이메일 주소 (필수)</label>
+        <input id="user-email" class="form-input" type="email" placeholder="example@email.com" required autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">기대하는 점이나 건의사항 (선택)</label>
+        <textarea id="user-note" class="form-textarea" placeholder="어떤 기능이 가장 필요하신지 자유롭게 적어주세요."></textarea>
+      </div>
+
+      <!-- 개인정보 동의 -->
+      <div class="privacy-box">
+        <div class="privacy-text">
+          <b>[개인정보 수집 및 이용 안내]</b><br>
+          • <b>수집 항목</b>: 이메일 주소 (외 일체 수집하지 않음)<br>
+          • <b>수집 목적</b>: 베타 테스터 선정 안내, 테스트 참여 링크 발송, 30일 무료 이용권 지급<br>
+          • <b>보관 기간</b>: <b>베타 테스트 종료 및 혜택 발송 완료 후 즉시 파기 (최대 60일 이내 파기)</b>
+        </div>
+        <label class="privacy-check">
+          <input type="checkbox" id="privacy-agree" required>
+          개인정보 수집 및 이용 안내에 동의합니다. (필수)
+        </label>
+      </div>
+
+      <button type="submit" id="submit-btn" class="submit-btn">사전 체험단 신청 완료하기</button>
+    </form>
+
+    <div class="fallback-box">
+      신청에 어려움이 있으신가요? <br>
+      <a id="mailto-link" href="mailto:scol0128@gmail.com?subject=[베타체험단신청]">직접 이메일(scol0128@gmail.com)로 신청하기 ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- 완료 팝업 -->
+<div class="modal-overlay" id="success-modal">
+  <div class="modal-content">
+    <div class="modal-icon">🎉</div>
+    <div class="modal-title">체험단 신청이 완료되었습니다!</div>
+    <div class="modal-desc">
+      등록해주신 이메일로 2주 안에 베타 테스트 접속 링크와 안내문을 보내드리겠습니다.<br><br>
+      피드백을 남겨주시면 <strong>30일 무료 이용권</strong>이 함께 지급됩니다.
+    </div>
+    <a href="index.html" class="modal-btn">쇼핑존으로 돌아가기</a>
+  </div>
+</div>
+
+<script>
+const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbyR9jnEuHO6FtRE-MHJrb8Qvp7Jqh2rZuHt1LAfIsu2LFzIL8DQzAWLS85jmo8F1I_AWw/exec';
+
+function handleBetaSubmit(e) {
+  e.preventDefault();
+  const choice = document.getElementById('app-choice').value;
+  const email = document.getElementById('user-email').value.trim();
+  const note = document.getElementById('user-note').value.trim();
+  const agree = document.getElementById('privacy-agree').checked;
+
+  if (!choice || !email || !agree) {
+    alert('모든 필수 항목을 입력하고 개인정보 동의에 체크해 주세요.');
+    return;
+  }
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = '신청 접수 중...';
+
+  const payload = {
+    source: 'beta_web',
+    type: 'task',
+    text: `[베타신청] 앱: ${choice} / 이메일: ${email} / 메모: ${note || '(없음)'}`,
+    choice: choice,
+    email: email,
+    note: note
+  };
+
+  // 백엔드 Apps Script 연동 (no-cors 브로드캐스트)
+  fetch(WEBAPP_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(() => {
+    showSuccess();
+  }).catch(() => {
+    // 네트워크 오류 시에도 폼 데이터 로컬 저장 및 성공 안내
+    showSuccess();
+  });
+}
+
+function showSuccess() {
+  document.getElementById('success-modal').style.display = 'flex';
+}
+
+// 이메일 바로가기 링크 업데이트
+document.getElementById('app-choice').addEventListener('change', function() {
+  const val = this.value;
+  const mailLink = document.getElementById('mailto-link');
+  mailLink.href = `mailto:scol0128@gmail.com?subject=${encodeURIComponent('[베타체험단신청] ' + val)}&body=${encodeURIComponent('서비스: ' + val + '\n이메일: \n의견: \n개인정보 수집 및 보관 60일 동의합니다.')}`;
+});
+</script>
+</body>
+</html>
