@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>K-Food Tycoon</title>
+  <link rel="icon" href="data:," />
+  <style>
+    html, body { margin: 0; height: 100%; background: #14101f; overflow: hidden; touch-action: none; -webkit-user-select: none; user-select: none; }
+    #game { width: 100%; height: 100%; }
+    #rotate { display: none; position: fixed; inset: 0; z-index: 10; background: #14101f; color: #ffe066;
+      font: bold 26px "Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",Arial,sans-serif;
+      align-items: center; justify-content: center; text-align: center; padding: 24px; box-sizing: border-box; flex-direction: column; gap: 18px; }
+    #rotate::before { content: ""; width: 64px; height: 104px; border: 6px solid #ffe066; border-radius: 12px; transform: rotate(-90deg); margin-bottom: 8px; }
+    @media (orientation: portrait) and (pointer: coarse) { #rotate { display: flex; } }
+  </style>
+  <script type="module" crossorigin src="./assets/index-Cfcd37uV.js"></script>
+</head>
+<body>
+  <div id="game"></div>
+  <div id="rotate">Please rotate your device</div>
+</body>
+</html>
